@@ -17,11 +17,19 @@
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_inv</sprite>
     <sprite>sprites\sprite9</sprite>
+    <sprite>sprites\sprite11</sprite>
+    <sprite>sprites\sprite14</sprite>
+    <sprite>sprites\sprite12</sprite>
+    <sprite>sprites\sprite15</sprite>
+    <sprite>sprites\sprite16</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\bombscript.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
@@ -32,6 +40,11 @@
     <object>objects\obj_enemy</object>
     <object>objects\obj_invuln</object>
     <object>objects\obj_wall_parent</object>
+    <object>objects\obj_bomb</object>
+    <object>objects\object12</object>
+    <object>objects\obj_burst</object>
+    <object>objects\obj_bigburst</object>
+    <object>objects\obj_bombup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>
