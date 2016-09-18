@@ -22,7 +22,6 @@
     <sprite>sprites\sprite12</sprite>
     <sprite>sprites\sprite15</sprite>
     <sprite>sprites\sprite16</sprite>
-    <sprite>sprites\Dong</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
