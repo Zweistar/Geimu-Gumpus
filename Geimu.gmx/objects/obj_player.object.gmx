@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>grav = 0.3;
+            <string>///These are all the variables that initialize when the player spawns
+
+grav = 0.3;
 hsp = 0;
 vsp = 0;
 jumpspeed_normal = 7;
@@ -147,17 +149,24 @@ if (hsp &gt; 0) plrdir = -1
  
 if (hsp &lt; 0) plrdir = 1
 
+// the stuff above here just sets up the left and right arrows to move you left or right. 
+// key_left and key_right return either 1 or 0, so holding both makes you stand still.
+
 if keyboard_check(vk_space) &amp;&amp; jump = 0
     {
     jump = 1
     }
   
+//jumping
+
 if hsp != 0 &amp;&amp; vsp = 0 &amp;&amp; jump = 0
     {
     sprite_index = spr_walk
     image_speed = 10/30
     image_xscale = plrdir
     }
+
+// walking animation set to activate when you're moving horizontally, no airwalking.
 
 if vsp != 0 &amp;&amp; jump = 1
     {
@@ -166,10 +175,15 @@ if vsp != 0 &amp;&amp; jump = 1
     image_speed = 35/30
     image_xscale = plrdir
     }
+    
+// Jumping animation, pretty simple
+
 if vsp &lt;= 0 or vsp &gt;= 0
     {
     vsp = vsp + grav
     }
+    
+// This makes gravity exist. Vsp is vertical speed, and adding to it makes the player move downwards.
 
 if vsp == 0 and (place_meeting(x,y+1,obj_wall_parent))
     {
@@ -186,13 +200,15 @@ if hsp == 0 and (place_meeting(x,y+1,obj_wall_parent))
     image_xscale = plrdir
     }
     
-
+// Collision data against all wall objects, dictated by "obj_wall_parent".
 
 if keyboard_check_pressed(vk_space)
 {
 vsp = key_jump * -jumpspeed
 jump = 1
 }
+
+// jumping again I guess
 
 if(place_meeting(x+hsp,y,obj_wall_parent))
     {
@@ -225,6 +241,8 @@ if !(place_meeting(x+hsp,y,obj_wall_parent)) &amp;&amp; !(place_meeting(x,y+ymin
         }
     }
     
+// all of this was to walk up and down slopes
+
 if keyboard_check_pressed(ord("Z")) &amp;&amp; canshoot = 0
     {
     if abilitytype = 1
@@ -233,6 +251,9 @@ if keyboard_check_pressed(ord("Z")) &amp;&amp; canshoot = 0
         canshoot = 1
         }
     }
+    
+// shoot the things, drop the bombs. It reads the script under "scripts" on the left.
+
 if(place_meeting(x,y+vsp,obj_wall_parent))
     {
     while(!place_meeting(x,y+sign(vsp),obj_wall_parent))
@@ -241,12 +262,20 @@ if(place_meeting(x,y+vsp,obj_wall_parent))
         }   
        vsp = 0; 
     }
+    
+// collision!
+
 if invuln = true
 {
 alarm[1] = 300
 }
+
+// invulnerability timer, 5 seconds when room speed is 60
+
 x += hsp;
 y += vsp;
+
+// these update your position by adding your hsp and vsp to your X and Y coordinates. Simple stuff.
 </string>
           </argument>
         </arguments>

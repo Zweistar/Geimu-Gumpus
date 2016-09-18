@@ -31,6 +31,8 @@ grav = 0.2;
 hsp = 0;
 vsp = 0;
 image_speed = 10/30
+
+// initial variables!
 </string>
           </argument>
         </arguments>
@@ -57,7 +59,7 @@ image_speed = 10/30
 vsp += grav;
 image_xscale = -dir
 
-if(place_meeting(x+hsp,y,obj_wall))
+if(place_meeting(x+hsp,y,obj_wall_parent))
     {
     while(!place_meeting(x+sign(hsp),y,obj_wall_parent))
         {
@@ -66,6 +68,8 @@ if(place_meeting(x+hsp,y,obj_wall))
        hsp = 0; 
      dir *= -1
      }
+
+// collision with blocks!
 
 x += hsp
     
@@ -77,6 +81,9 @@ if(place_meeting(x,y+vsp,obj_wall_parent))
         }   
        vsp = 0; 
     }
+    
+// more collision with blocks!
+
 y += vsp
 
 if (place_meeting(x,y,obj_player))
@@ -96,6 +103,8 @@ if (place_meeting(x,y,obj_player))
     }
 }
 
+// if the player jumps on it, it dies, any contact from a direction other than above 
+// restarts the room.
 
 
 

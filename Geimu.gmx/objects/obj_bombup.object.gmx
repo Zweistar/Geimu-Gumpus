@@ -63,6 +63,8 @@ if abs(x-basex) &gt;= 3
 {
 hsp = -hsp
 }
+
+// all this is how it just slowly moves around.
 </string>
           </argument>
         </arguments>
@@ -90,6 +92,10 @@ hsp = -hsp
 abilitytype = 1
 }
 instance_destroy()
+
+// on collision with the player, it updates the player's abilitytype variable to 1, enabling the bomb power.
+// note that using "other" is generally a good idea because using a specific object's name will
+// make it interact with every instance of that object, regardless of collision or whatever.
 </string>
           </argument>
         </arguments>

@@ -6,6 +6,9 @@ shot.vsp = -15
 shot.hsp = 0
 alarm[0] = 30
 }
+
+// shoot up!
+
 else
 if keyboard_check(vk_down)
 {
@@ -14,6 +17,8 @@ alarm[0] = 50
 canmove = 1
 alarm[2] = 50
 }
+
+// blow yourself up!
 
 else
 {
@@ -33,3 +38,5 @@ if plrdir = 1
     }
     
 }
+
+// shoot to the sides!
