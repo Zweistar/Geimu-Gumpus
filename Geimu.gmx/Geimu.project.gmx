@@ -23,6 +23,10 @@
     <sprite>sprites\sprite15</sprite>
     <sprite>sprites\sprite16</sprite>
     <sprite>sprites\spr_beetle</sprite>
+    <sprite>sprites\spr_fly</sprite>
+    <sprite>sprites\spr_caterpillar</sprite>
+    <sprite>sprites\spr_wasp</sprite>
+    <sprite>sprites\spr_rolypoly</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
