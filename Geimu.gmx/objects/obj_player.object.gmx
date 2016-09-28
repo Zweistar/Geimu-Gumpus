@@ -27,13 +27,13 @@
             <kind>1</kind>
             <string>///These are all the variables that initialize when the player spawns
 
-grav = 0.3;
+grav = 0.2;
 hsp = 0;
 vsp = 0;
 jumpspeed_normal = 7;
 jumpspeed_powerup = 10;
 jumpspeed = jumpspeed_normal;
-movespeed = 3;
+movespeed = 5;
 jumppress = false;
 plrdir = 1;
 invuln = false
@@ -44,6 +44,7 @@ yminus = 1
 canshoot = 0
 abilitytype = 0
 canmove = 0
+key_down = 0
 </string>
           </argument>
         </arguments>
@@ -139,6 +140,7 @@ canmove = 0
             <string>key_right = keyboard_check(vk_right);
 key_left = -keyboard_check(vk_left);
 key_jump = keyboard_check_pressed(vk_space);
+key_down = keyboard_check(vk_down);
 move = key_left + key_right
 
 if canmove = 0
@@ -189,11 +191,11 @@ if vsp == 0 and (place_meeting(x,y+1,obj_wall_parent))
     {
     jump = 0
     }
-if (place_meeting(x,y+1,obj_wall_parent))
+if (place_meeting(x,y+1,obj_wall_parent) or place_meeting(x,y+1,obj_platform))
     {
     jump = 0
     }
-if hsp == 0 and (place_meeting(x,y+1,obj_wall_parent))
+if hsp == 0 and (place_meeting(x,y+1,obj_wall_parent) or place_meeting(x,y+1,obj_platform))
     {
     sprite_index = spr_player
     image_speed = 3/30
@@ -202,9 +204,9 @@ if hsp == 0 and (place_meeting(x,y+1,obj_wall_parent))
     
 // Collision data against all wall objects, dictated by "obj_wall_parent".
 
-if keyboard_check_pressed(vk_space)
+if keyboard_check_pressed(vk_space) &amp;&amp; jump = 0
 {
-vsp = key_jump * -jumpspeed
+if (key_jump) vsp = -jumpspeed
 jump = 1
 }
 
@@ -243,6 +245,16 @@ if !(place_meeting(x+hsp,y,obj_wall_parent)) &amp;&amp; !(place_meeting(x,y+ymin
     
 // all of this was to walk up and down slopes
 
+if keyboard_check(ord("Z")) &amp;&amp; canshoot = 0
+    {
+    
+    if abilitytype = 2
+        {
+        script_execute(flarescript)
+        canshoot = 1
+        }
+    }
+    
 if keyboard_check_pressed(ord("Z")) &amp;&amp; canshoot = 0
     {
     if abilitytype = 1
@@ -250,8 +262,8 @@ if keyboard_check_pressed(ord("Z")) &amp;&amp; canshoot = 0
         script_execute(bombscript)
         canshoot = 1
         }
-    }
     
+    }
 // shoot the things, drop the bombs. It reads the script under "scripts" on the left.
 
 if(place_meeting(x,y+vsp,obj_wall_parent))
@@ -262,6 +274,7 @@ if(place_meeting(x,y+vsp,obj_wall_parent))
         }   
        vsp = 0; 
     }
+
     
 // collision!
 

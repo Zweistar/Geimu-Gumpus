@@ -13,6 +13,7 @@
     <sprite>sprites\sprite10</sprite>
     <sprite>sprites\sprite8</sprite>
     <sprite>sprites\spr_flatwall</sprite>
+    <sprite>sprites\spr_platform</sprite>
     <sprite>sprites\spr_powerup</sprite>
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_inv</sprite>
@@ -22,11 +23,14 @@
     <sprite>sprites\sprite12</sprite>
     <sprite>sprites\sprite15</sprite>
     <sprite>sprites\sprite16</sprite>
+    <sprite>sprites\sprite24</sprite>
     <sprite>sprites\spr_beetle</sprite>
     <sprite>sprites\spr_fly</sprite>
     <sprite>sprites\spr_caterpillar</sprite>
     <sprite>sprites\spr_wasp</sprite>
     <sprite>sprites\spr_rolypoly</sprite>
+    <sprite>sprites\spr_fireshot</sprite>
+    <sprite>sprites\spr_firespout</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -34,10 +38,12 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\bombscript.gml</script>
+    <script>scripts\flarescript.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
+    <object>objects\obj_platform</object>
     <object>objects\object5</object>
     <object>objects\object8</object>
     <object>objects\object7</object>
@@ -46,10 +52,13 @@
     <object>objects\obj_invuln</object>
     <object>objects\obj_wall_parent</object>
     <object>objects\obj_bomb</object>
+    <object>objects\obj_flareshot</object>
     <object>objects\object12</object>
     <object>objects\obj_burst</object>
     <object>objects\obj_bigburst</object>
     <object>objects\obj_bombup</object>
+    <object>objects\obj_flareup</object>
+    <object>objects\obj_flarespout</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>
