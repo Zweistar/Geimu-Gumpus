@@ -33,7 +33,7 @@ vsp = 0;
 jumpspeed_normal = 7;
 jumpspeed_powerup = 10;
 jumpspeed = jumpspeed_normal;
-movespeed = 5;
+movespeed = 3;
 jumppress = false;
 plrdir = 1;
 invuln = false
@@ -45,6 +45,7 @@ canshoot = 0
 abilitytype = 0
 canmove = 0
 key_down = 0
+timestoptimer = 0
 </string>
           </argument>
         </arguments>
@@ -147,6 +148,10 @@ if canmove = 0
 {
 hsp = move * movespeed;
 }
+if canmove = 1 &amp;&amp; jump = 0
+{
+hsp = 0
+}
 if (hsp &gt; 0) plrdir = -1
  
 if (hsp &lt; 0) plrdir = 1
@@ -187,15 +192,15 @@ if vsp &lt;= 0 or vsp &gt;= 0
     
 // This makes gravity exist. Vsp is vertical speed, and adding to it makes the player move downwards.
 
-if vsp == 0 and (place_meeting(x,y+1,obj_wall_parent))
+if vsp == 0 and ((place_meeting(x,y+1,obj_wall_parent)) || (place_meeting(x,y+1,obj_realwall)))
     {
     jump = 0
     }
-if (place_meeting(x,y+1,obj_wall_parent) or place_meeting(x,y+1,obj_platform))
+if (place_meeting(x,y+1,obj_wall_parent) or place_meeting(x,y+1,obj_realwall))
     {
     jump = 0
     }
-if hsp == 0 and (place_meeting(x,y+1,obj_wall_parent) or place_meeting(x,y+1,obj_platform))
+if hsp == 0 and (place_meeting(x,y+1,obj_wall_parent) or place_meeting(x,y+1,obj_realwall))
     {
     sprite_index = spr_player
     image_speed = 3/30
@@ -215,7 +220,7 @@ jump = 1
 if(place_meeting(x+hsp,y,obj_wall_parent))
     {
     yplus = 0;
-    while(place_meeting(x+hsp,y-yplus,obj_wall_parent) &amp;&amp; yplus &lt;= abs(2*hsp)) yplus += 1;
+    while(place_meeting(x+hsp,y-yplus,obj_wall_parent) &amp;&amp; yplus &lt;= abs(3*hsp)) yplus += 1;
     if place_meeting(x+hsp,y-yplus,obj_wall_parent)
         {
         
@@ -230,7 +235,7 @@ if(place_meeting(x+hsp,y,obj_wall_parent))
 
 if !(place_meeting(x+hsp,y,obj_wall_parent)) &amp;&amp; !(place_meeting(x,y+yminus,obj_wall_parent)) &amp;&amp; jump = 0
     {
-    while(place_meeting(x+hsp,y+yminus,obj_wall_parent) &amp;&amp; yminus &lt;= abs(1*hsp)) yminus += 1;
+    while(place_meeting(x+hsp,y+yminus,obj_wall_parent) &amp;&amp; yminus &lt;= abs(3*hsp)) yminus += 1;
     if place_meeting(x+hsp,y+yminus,obj_wall_parent)
         {
         
@@ -253,8 +258,15 @@ if keyboard_check(ord("Z")) &amp;&amp; canshoot = 0
         script_execute(flarescript)
         canshoot = 1
         }
-    }
     
+    if abilitytype = 3
+        {
+        script_execute(shockscript)
+        canshoot = 1
+        }
+    }
+
+        
 if keyboard_check_pressed(ord("Z")) &amp;&amp; canshoot = 0
     {
     if abilitytype = 1
@@ -263,16 +275,47 @@ if keyboard_check_pressed(ord("Z")) &amp;&amp; canshoot = 0
         canshoot = 1
         }
     
+    if abilitytype = 4
+        {
+        script_execute(goopscript)
+        canshoot = 1
+        }
     }
 // shoot the things, drop the bombs. It reads the script under "scripts" on the left.
 
-if(place_meeting(x,y+vsp,obj_wall_parent))
+if ((place_meeting(x,y+vsp,obj_wall_parent)))
     {
-    while(!place_meeting(x,y+sign(vsp),obj_wall_parent))
+    while((!place_meeting(x,y+sign(vsp),obj_wall_parent)))
         {
         y += sign(vsp);
         }   
        vsp = 0; 
+    }
+
+if(place_meeting(x+hsp,y,obj_realwall))
+    {
+    while(!place_meeting(x+sign(hsp),y,obj_realwall))
+        {
+        x += sign(hsp);
+        }   
+       hsp = 0; 
+     
+     }
+     
+if(place_meeting(x,y+vsp,obj_realwall))
+    {
+    while(!place_meeting(x,y+sign(vsp),obj_realwall))
+        {
+        y += sign(vsp);
+        }   
+       vsp = 0; 
+     
+     }
+if place_meeting(x,y+1,obj_realwall)
+    {
+    vsp = 0
+    jump = 0
+   
     }
 
     

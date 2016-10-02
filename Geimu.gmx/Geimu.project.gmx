@@ -11,6 +11,8 @@
     <sprite>sprites\spr_jump</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\sprite10</sprite>
+    <sprite>sprites\sprite25</sprite>
+    <sprite>sprites\sprite26</sprite>
     <sprite>sprites\sprite8</sprite>
     <sprite>sprites\spr_flatwall</sprite>
     <sprite>sprites\spr_platform</sprite>
@@ -24,6 +26,8 @@
     <sprite>sprites\sprite15</sprite>
     <sprite>sprites\sprite16</sprite>
     <sprite>sprites\sprite24</sprite>
+    <sprite>sprites\sprite28</sprite>
+    <sprite>sprites\sprite30</sprite>
     <sprite>sprites\spr_beetle</sprite>
     <sprite>sprites\spr_fly</sprite>
     <sprite>sprites\spr_caterpillar</sprite>
@@ -31,6 +35,9 @@
     <sprite>sprites\spr_rolypoly</sprite>
     <sprite>sprites\spr_fireshot</sprite>
     <sprite>sprites\spr_firespout</sprite>
+    <sprite>sprites\spr_shocko</sprite>
+    <sprite>sprites\spr_gooball</sprite>
+    <sprite>sprites\spr_goobubble</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -38,11 +45,16 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\bombscript.gml</script>
+    <script>scripts\goopscript.gml</script>
     <script>scripts\flarescript.gml</script>
+    <script>scripts\shockscript.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
+    <object>objects\object20</object>
+    <object>objects\object21</object>
+    <object>objects\obj_realwall</object>
     <object>objects\obj_platform</object>
     <object>objects\object5</object>
     <object>objects\object8</object>
@@ -51,14 +63,20 @@
     <object>objects\obj_enemy</object>
     <object>objects\obj_invuln</object>
     <object>objects\obj_wall_parent</object>
+    <object>objects\obj_slope_parent</object>
     <object>objects\obj_bomb</object>
+    <object>objects\obj_gooball</object>
     <object>objects\obj_flareshot</object>
     <object>objects\object12</object>
     <object>objects\obj_burst</object>
     <object>objects\obj_bigburst</object>
     <object>objects\obj_bombup</object>
     <object>objects\obj_flareup</object>
+    <object>objects\obj_shockup</object>
+    <object>objects\obj_goopup</object>
     <object>objects\obj_flarespout</object>
+    <object>objects\obj_shockfield</object>
+    <object>objects\obj_goobubble</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>

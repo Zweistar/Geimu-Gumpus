@@ -11,7 +11,7 @@ alarm[0] = 30
 else
 if keyboard_check(ord('Z'))
 {
-alarm[0] = 10
+alarm[0] = 6
 shot = instance_create(x,y-30,obj_flareshot);
 
 
